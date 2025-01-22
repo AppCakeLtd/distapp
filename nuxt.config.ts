@@ -104,7 +104,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'awsAmplify'
+    preset: 'aws_amplify'
     // node: true,
   },
 
