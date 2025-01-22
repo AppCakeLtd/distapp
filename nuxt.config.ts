@@ -79,9 +79,9 @@ export default defineNuxtConfig({
       apiAuthKey: '',
     },
     APP_LIMIT_BETA_ORG: 1,
-    APP_LIMIT_BETA_APPS: 2,
-    APP_LIMIT_API_KEYS: 5,
-    APP_LIMIT_APPS_GROUP: 16,
+    APP_LIMIT_BETA_APPS: 200,
+    APP_LIMIT_API_KEYS: 500,
+    APP_LIMIT_APPS_GROUP: 1600,
     APP_LIMIT_APPS_GROUPS_TESTER: 100,
     APP_LIMIT_INVITE_ORGS: 48,
     APP_LIMIT_UPLOAD_SIZE: 83886080, // 80 mb
@@ -104,14 +104,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'cloudflare-pages',
-    experimental: {
-      openAPI: true,
-      tasks: true,
-    },
-    scheduledTasks: {
-      '0 */24 * * *': 'purgeArtifact',
-    },
+    preset: 'awsAmplify'
     // node: true,
   },
 
