@@ -5,14 +5,15 @@ import path from 'path'
 var migrated = false
 
 export const runMigration = async () => {
+    const config = useRuntimeConfig()
     if (migrated) {
         return
     }
-    if (process.env.NUXT_APP_MIGRATION_ENABLE !== 'true') {
+    if (config.APP_MIGRATION_ENABLE !== 'true') {
         console.log('⏩ Migration skipped')
         return
     }
-    var migrationDir = process.env.NUXT_APP_MIGRATION_DIR
+    var migrationDir = config.APP_MIGRATION_DIR
     migrationDir = path.join(migrationDir ? migrationDir : process.cwd(), 'server', 'db', 'drizzle')
     console.log('🔄 Migration starting',)
 

@@ -86,7 +86,7 @@ export default defineNuxtConfig({
     APP_LIMIT_INVITE_ORGS: 48,
     APP_LIMIT_UPLOAD_SIZE: 83886080, // 80 mb
     LOCAL_AUTHS: process.env.NUXT_LOCAL_AUTHS || '',
-    APP_ENABLE_DRIZZLE_LOGGING: process.env.NUXT_APP_ENABLE_DRIZZLE_LOGGING || false,
+    APP_ENABLE_DRIZZLE_LOGGING: false,
     JWT_KEY: process.env.NUXT_JWT_KEY || '',
     DB_URL: process.env.NUXT_DB_URL || '',
     DB_AUTH_TOKEN: process.env.NUXT_DB_AUTH_TOKEN || '',
