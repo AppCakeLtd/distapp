@@ -86,9 +86,13 @@ export default defineNuxtConfig({
     APP_LIMIT_INVITE_ORGS: 48,
     APP_LIMIT_UPLOAD_SIZE: 83886080, // 80 mb
     LOCAL_AUTHS: process.env.NUXT_LOCAL_AUTHS || '',
+    APP_ENABLE_DRIZZLE_LOGGING: process.env.NUXT_APP_ENABLE_DRIZZLE_LOGGING || false,
     JWT_KEY: process.env.NUXT_JWT_KEY || '',
     DB_URL: process.env.NUXT_DB_URL || '',
     DB_AUTH_TOKEN: process.env.NUXT_DB_AUTH_TOKEN || '',
+    APP_MIGRATION_ENABLE: process.env.NUXT_APP_MIGRATION_ENABLE || false,
+    APP_MIGRATION_DIR: process.env.NUXT_APP_MIGRATION_DIR || '',
+    APP_API_AUTH_KEY: process.env.NUXT_APP_API_AUTH_KEY || '',
     S3_ENDPOINT: process.env.NUXT_S3_ENDPOINT || '',
     S3_ACCESS_KEY_ID: process.env.NUXT_S3_ACCESS_KEY_ID || '',
     S3_SECRET_ACCESS_KEY: process.env.NUXT_S3_SECRET_ACCESS_KEY || '',

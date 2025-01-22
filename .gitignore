@@ -41,3 +41,4 @@ playwright/.auth
 tests/tests_artifacts
 __MACOSX
 .distapp-data
+.amplify-hosting
