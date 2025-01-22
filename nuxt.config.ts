@@ -104,7 +104,9 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'aws_amplify'
+    awsAmplify: {
+      catchAllStaticFallback: true
+    }
     // node: true,
   },
 
