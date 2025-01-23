@@ -78,7 +78,7 @@ export default defineNuxtConfig({
       limitUploadSizeMb: 120,
       apiAuthKey: '',
     },
-    APP_LIMIT_BETA_ORG: 1,
+    APP_LIMIT_BETA_ORG: 100,
     APP_LIMIT_BETA_APPS: 200,
     APP_LIMIT_API_KEYS: 500,
     APP_LIMIT_APPS_GROUP: 1600,
