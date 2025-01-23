@@ -77,7 +77,7 @@ export default defineNuxtConfig({
     app: {
       enableDrizzleLogging: true,
       limitUploadSizeMb: 120,
-      apiAuthKey: '',
+      apiAuthKey: process.env.NUXT_APP_API_AUTH_KEY || '',
     },
     APP_LIMIT_BETA_ORG: 100,
     APP_LIMIT_BETA_APPS: 200,
