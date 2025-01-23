@@ -1,6 +1,7 @@
 import { count } from "drizzle-orm"
 import type { LibSQLDatabase } from "drizzle-orm/libsql"
 import { uuidv7 } from "uuidv7"
+import { ConsoleLogger } from "aws-amplify/utils"
 
 export type UploadTempValue = {
     fileKey: string
@@ -48,6 +49,8 @@ export async function findApiKey(
 }
 
 export default defineEventHandler(async (event) => {
+    const logger = new ConsoleLogger('cloudwatch');
+    logger.info("Entered Upload Handler");
     const db = event.context.drizzle
     const { orgName, appName, hasFileApk, filename, fileSize, fileSizeApk } = await readValidatedBody(event, z.object({
         appName: z.string().trim().min(1).max(128),
@@ -57,6 +60,7 @@ export default defineEventHandler(async (event) => {
         fileSize: z.number(),
         fileSizeApk: z.number().nullish(),
     }).parse)
+    logger.info("Body validated");
 
     const { APP_LIMIT_UPLOAD_SIZE } = useRuntimeConfig(event)
     if (fileSize >= APP_LIMIT_UPLOAD_SIZE || (hasFileApk && fileSizeApk ? fileSizeApk >= APP_LIMIT_UPLOAD_SIZE : false)) {
@@ -64,6 +68,7 @@ export default defineEventHandler(async (event) => {
             message: `Maximum file size is ${APP_LIMIT_UPLOAD_SIZE} bytes`,
         })
     }
+    logger.info("max limit determined");
 
     var orgId: string
     var appId: string
