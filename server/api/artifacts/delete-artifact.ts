@@ -2,6 +2,7 @@ import { S3Fetch } from "~/server/services/s3fetch"
 import { getDetailArtifact } from "./detail-artifact.get"
 
 export default defineEventHandler(async (event) => {
+    console.log(process.version)
     const db = event.context.drizzle
     const { appName, orgName, releaseId } = await getValidatedQuery(event, z.object({
         appName: z.string().trim().min(1).max(128),
