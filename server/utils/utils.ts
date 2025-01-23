@@ -47,9 +47,6 @@ export const generateRandomPassword = (length = 60) => {
     return password
 }
 
-
-export const s3BucketName = 'distapp'
-
 export const userTokensKey = 'usr-k'
 export const userTokensHeaderKey = 'usr-k-sv'
 

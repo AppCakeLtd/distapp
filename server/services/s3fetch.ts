@@ -3,7 +3,7 @@ import { AwsClient } from "aws4fetch"
 export class S3Fetch {
     async getSignedUrlPutObject(key: string, expiresIn: number, fileSize: number | 'allow_no_limit'): Promise<string> {
         const { client, S3_ENDPOINT } = createAwsClient()
-        const signedUrl = await client.sign(`${S3_ENDPOINT}/${s3BucketName}/${key}?X-Amz-Expires=${expiresIn}`, {
+        const signedUrl = await client.sign(`${S3_ENDPOINT}/${key}?X-Amz-Expires=${expiresIn}`, {
             method: 'put',
             aws: {
                 signQuery: true,
@@ -20,7 +20,7 @@ export class S3Fetch {
 
     async getSignedUrlGetObject(key: string, expiresIn: number, contentDisposition: string): Promise<string> {
         const { client, S3_ENDPOINT } = createAwsClient()
-        const signedUrl = await client.sign(`${S3_ENDPOINT}/${s3BucketName}/${key}?X-Amz-Expires=${expiresIn}&response-content-disposition=${contentDisposition}&response-content-type=application/octet-stream`, {
+        const signedUrl = await client.sign(`${S3_ENDPOINT}/${key}?X-Amz-Expires=${expiresIn}&response-content-disposition=${contentDisposition}&response-content-type=application/octet-stream`, {
             aws: {
                 signQuery: true,
             },
@@ -34,7 +34,7 @@ export class S3Fetch {
         contentType: string,
     }> {
         const { client, S3_ENDPOINT } = createAwsClient()
-        const headObject = await client.fetch(`${S3_ENDPOINT}/${s3BucketName}/${key}`, {
+        const headObject = await client.fetch(`${S3_ENDPOINT}/${key}`, {
             method: 'head',
             aws: {
                 signQuery: true,
@@ -50,7 +50,7 @@ export class S3Fetch {
 
     async deleteObject(key: string) {
         const { client, S3_ENDPOINT } = createAwsClient()
-        const resp = await client.fetch(`${S3_ENDPOINT}/${s3BucketName}/${key}`, {
+        const resp = await client.fetch(`${S3_ENDPOINT}/${key}`, {
             method: 'delete',
         })
         if (!resp.ok) {
