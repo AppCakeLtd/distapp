@@ -2,7 +2,7 @@ import { parse } from "@plist/parse"
 import JSZip from "jszip"
 import { myFetch } from './upload-utils.js'
 
-export const readPackageFile = async (data: File | Buffer | ArrayBuffer | string | Blob) => {
+export const readPackageFile = async (data: File | Buffer | ArrayBuffer | string | Blob, filename: string) => {
     var fileZip = new JSZip();
     await fileZip.loadAsync(data)
     var extension = ''
@@ -67,10 +67,19 @@ export const readPackageFile = async (data: File | Buffer | ArrayBuffer | string
         // return undefined
         // lets return the file details instead of failing, to support binary distribution
         extension = 'zip'
-        packageMetadata = {
-            versionCode: '0',
-            versionName: '0',
-            packageName: '0'
+        // try and parse the version number from the filename
+        const nameparts = filename.match(/(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)/);
+        if (nameparts?.length) {
+            const vparts = nameparts[0].split('.');
+            const namepart = filename.split('-')[0];
+            packageMetadata = {
+                versionCode: `${vparts[2]}`,
+                versionName: `${vparts[0]}.${vparts[1]}.${vparts[2]}`,
+                packageName: namepart
+            }
+        }
+        else {
+            return
         }
     }
     const versionCodeNorm = packageMetadata?.versionCode?.match(/\d+/g)?.join('') ?? ''

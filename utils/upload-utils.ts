@@ -48,7 +48,7 @@ export async function uploadArtifact(
     releaseNotes: string | null,
     fileApk: File | Buffer | 'generate_bundle' | undefined,
 ) {
-    const packageMetadata = await readPackageFile(file)
+    const packageMetadata = await readPackageFile(file, filename)
     if (!packageMetadata) {
         throw 'Cannot read package file'
     }
