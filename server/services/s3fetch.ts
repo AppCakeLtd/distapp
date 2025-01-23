@@ -65,7 +65,7 @@ export class S3Fetch {
 export const createAwsClient = () => {
     const config = useRuntimeConfig()
     const client = new AwsClient({
-        region: 'auto',
+        region: 'eu-west-1',
         accessKeyId: config.S3_ACCESS_KEY_ID!,
         secretAccessKey: config.S3_SECRET_ACCESS_KEY!,
     })
