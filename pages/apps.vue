@@ -120,7 +120,7 @@ useTitleApp('Apps')
             </Column>
             <Column header="OS">
                 <template #body="prop">
-                    {{ prop.data.osType === 'android' ? 'Android' : 'iOS' }}
+                    {{ prop.data.osType === 'android' ? 'Android' : (prop.data.osType == 'ios' ? 'iOS' : 'Embedded') }}
                 </template>
             </Column>
             <Column header="Owner" v-if="!isOrg">

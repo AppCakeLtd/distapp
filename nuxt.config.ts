@@ -57,8 +57,8 @@ const Noir = definePreset(Aura, {
   }
 })
 
-const title = 'DistApp • Manage and distribute Android or iOS app'
-const description = 'Manage and distribute Android or iOS app'
+const title = 'DistApp • Manage and distribute Enterprise Apps'
+const description = 'Manage and distribute Enterprise Apps'
 export default defineNuxtConfig({
   compatibilityDate: '2024-08-20',
   devtools: { enabled: true },
@@ -102,7 +102,7 @@ export default defineNuxtConfig({
       KEYSTORE_ALIAS: process.env.NUXT_BUNDLEAAB_KEYSTORE_ALIAS || '',
     },
     public: {
-      GOOGLE_CLIENT_ID: process.env.NUXT_GOOGLE_CLIENT_ID || '',
+      GOOGLE_CLIENT_ID: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID || '',
       LOCAL_AUTH_ENABLED: true,
     },
   },
@@ -165,7 +165,7 @@ export default defineNuxtConfig({
       },
       {
         name: 'description',
-        content: 'Manage and distribute Android or iOS app. App Center Alternative',
+        content: 'Manage and distribute Enterprise Apps. App Center Alternative',
       }, {
         name: 'keywords',
         content: 'distapp, dist, app, app center, appcenter, ios, android, microsoft, alternative app center, alternative',

@@ -3,10 +3,10 @@ import moment from "moment"
 import * as jose from 'jose'
 
 export const getMimeTypeFromosType = (osType?: OsType): string => {
-    return osType == 'android' ? 'application/vnd.android.package-archive,.aab' : '.ipa'
+    return osType == 'android' ? 'application/vnd.android.package-archive,.aab' : (osType == 'ios' ? '.ipa' : '.zip')
 }
 
-export type OsType = 'android' | 'ios'
+export type OsType = 'android' | 'ios' | 'embedded'
 
 export const getExtensionFromMimeType = (mimeType: string | undefined) => {
     if (mimeType === 'application/vnd.android.package-archive') {
@@ -14,7 +14,7 @@ export const getExtensionFromMimeType = (mimeType: string | undefined) => {
     } else if (mimeType === 'application/x-authorware-bin') {
         return 'aab'
     } else if (mimeType === 'application/octet-stream') {
-        return 'ipa'
+        return 'zip'
     }
     return mimeType
 }

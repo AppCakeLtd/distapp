@@ -50,7 +50,7 @@ import { formatDate } from '#imports';
 const props = defineProps<{
     orgName: string,
     appName: string,
-    osType: 'android' | 'ios' | null | undefined,
+    osType: 'android' | 'ios' | 'embedded' | null | undefined,
     groupName?: string | undefined,
 }>()
 

@@ -64,7 +64,14 @@ export const readPackageFile = async (data: File | Buffer | ArrayBuffer | string
         }
     }
     if (!packageMetadata) {
-        return undefined
+        // return undefined
+        // lets return the file details instead of failing, to support binary distribution
+        extension = 'zip'
+        packageMetadata = {
+            versionCode: '0',
+            versionName: '0',
+            packageName: '0'
+        }
     }
     const versionCodeNorm = packageMetadata?.versionCode?.match(/\d+/g)?.join('') ?? ''
     const packageDetail = {
