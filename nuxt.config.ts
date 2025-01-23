@@ -60,6 +60,7 @@ const Noir = definePreset(Aura, {
 const title = 'DistApp • Manage and distribute Enterprise Apps'
 const description = 'Manage and distribute Enterprise Apps'
 export default defineNuxtConfig({
+  debug: true,
   compatibilityDate: '2024-08-20',
   devtools: { enabled: true },
   ssr: false,
