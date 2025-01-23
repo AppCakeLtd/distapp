@@ -1,3 +1,6 @@
+import crypto from 'node:crypto'
+global.crypto = crypto
+
 import { AwsClient } from "aws4fetch"
 
 export class S3Fetch {
