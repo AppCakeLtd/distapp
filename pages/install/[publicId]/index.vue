@@ -37,7 +37,7 @@
                 </template>
                 <template #default>
                     <div v-if="item.releaseNotes">
-                        {{ item.releaseNotes }}
+                        <pre>{{ item.releaseNotes }}</pre>
                     </div>
                     <div v-else>
                         -
